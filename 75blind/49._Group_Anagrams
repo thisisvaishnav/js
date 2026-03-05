@@ -1,0 +1,25 @@
+/**
+ * @param {string[]} strs
+ * @return {string[][]}
+ */
+var groupAnagrams = function(strs) {
+    // I can use map here in this problme because it give me 
+    // flexibility to check wedther the pattern is matching 
+    // without me explicitivly chaect wedther it's anagram or not 
+
+    // creating a map 
+    const map = new Map();
+
+    // loop to run to check does it matched to explicitivly 
+    for (let word of strs) {
+        const key = word.split('').sort().join('');
+        // now I will put key in map and check wedhter other elesments are
+        // in map or if map don't have key then set that map as blank
+        if(!map.has(key)){
+            map.set(key, []);
+        }
+        map.get(key).push(word);
+    }
+    return Array.from(map.values());
+ 
+};
